@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/settings.json
+
+*.env
+
+*.webm
+*.m4a
