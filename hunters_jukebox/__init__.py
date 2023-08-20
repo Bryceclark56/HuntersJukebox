@@ -48,7 +48,13 @@ async def main():
         intents = discord.Intents.default()
         async with HuntersJukebox(commands.when_mentioned_or('h!'), web_client=our_client, initial_extensions=exts, intents=intents) as bot:
             await add_cogs(bot)
-            await bot.start(os.getenv('BOT_TOKEN'))
+
+            bot_token = os.getenv('BOT_TOKEN')
+            if bot_token is None:
+                print("Bot token not found; is BOT_TOKEN defined in this environment?")
+                return
+
+            await bot.start(bot_token)
 
 if __name__ == '__main__':
     load_dotenv()
